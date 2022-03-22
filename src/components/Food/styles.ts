@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  available: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background: #f0f0f5;
   border-radius: 8px;
 
@@ -12,9 +16,9 @@ export const Container = styled.div`
     transition: 0.3s opacity;
     text-align: center;
 
-    ${props =>
-    !props.available &&
-    css`
+    ${(props) =>
+      !props.available &&
+      css`
         opacity: 0.3;
       `};
 
@@ -30,10 +34,9 @@ export const Container = styled.div`
     h2 {
       color: #3d3d4d;
     }
-
+    
     p {
       color: #3d3d4d;
-
       margin-top: 16px;
     }
 
@@ -53,7 +56,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 20px 30px;
     background: #e4e4eb;
     border-radius: 0px 0px 8px 8px;
@@ -133,7 +135,7 @@ export const Container = styled.div`
         input:focus + .slider {
           box-shadow: 0 0 1px #2196f3;
         }
-
+        
         input:checked + .slider:before {
           -webkit-transform: translateX(32px);
           -ms-transform: translateX(32px);
